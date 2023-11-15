@@ -1,5 +1,11 @@
+import { Layout } from "./components/Layout";
+
 function App() {
-  return <h1 className=" text-2xl bg-fuchsia-400">Hello World</h1>;
+  return (
+    <>
+      <Layout />
+    </>
+  );
 }
 
 export { App };
