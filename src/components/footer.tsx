@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer>
+    <footer className="footer-container absolute w-screen">
       <p>Footer</p>
     </footer>
   );
