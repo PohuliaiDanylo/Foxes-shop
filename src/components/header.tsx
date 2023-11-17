@@ -1,12 +1,20 @@
 function Header() {
-  const navBar = document.querySelector(".header-container__mobile-responsive");
-  const menu = document.querySelector(".header-container__navigation-menu");
+  function getNavGetMenu() {
+    const navBar = document.querySelector(
+      ".header-container__mobile-responsive"
+    );
+    const menu = document.querySelector(".header-container__navigation-menu");
+    return { navBar, menu };
+  }
 
   function openMenu() {
+    const { navBar, menu } = getNavGetMenu();
     menu?.classList.add("header-container__navigation-menu-active");
     navBar?.classList.add("header-container__mobile-responsive-active");
   }
+
   function closeMenu() {
+    const { navBar, menu } = getNavGetMenu();
     menu?.classList.remove("header-container__navigation-menu-active");
     navBar?.classList.remove("header-container__mobile-responsive-active");
   }
