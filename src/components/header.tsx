@@ -1,4 +1,12 @@
 function Header() {
+  function resposiveness() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth > 768) {
+      closeMenu();
+    }
+  }
+
   function getNavGetMenu() {
     const navBar = document.querySelector(
       ".header-container__mobile-responsive"
@@ -18,6 +26,10 @@ function Header() {
     menu?.classList.remove("header-container__navigation-menu-active");
     navBar?.classList.remove("header-container__mobile-responsive-active");
   }
+
+  window.addEventListener("resize", () => {
+    resposiveness();
+  });
 
   return (
     <header className="header-container">
