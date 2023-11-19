@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header() {
   function resposiveness() {
     const screenWidth = window.innerWidth;
@@ -59,16 +61,16 @@ function Header() {
         </h1>
         <ul className="header-container__navigation-menu__list">
           <li className="header-container__navigation-menu__list__element">
-            Shop
+            <Link to="/shop">Shop</Link>
           </li>
           <li className="header-container__navigation-menu__list__element">
-            MainPage
+            <Link to="/">MainPage</Link>
           </li>
           <li className="header-container__navigation-menu__list__element">
-            Our History
+            <Link to="/history">Our History</Link>
           </li>
           <li className="header-container__navigation-menu__list__element">
-            All Items
+            <Link to="/items">All Items</Link>
           </li>
         </ul>
         <button
