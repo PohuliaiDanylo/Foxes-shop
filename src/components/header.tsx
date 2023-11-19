@@ -40,7 +40,7 @@ function Header() {
         >
           <img src="../../src/assets/header/dots.png" alt="open menu" />
         </button>
-        <h1 className="header-container__mobile-responsive__company-name header-container__company-name text-xl font-bold">
+        <h1 className="header-container__mobile-responsive__company-name header-container__company-name text-xl font-bold absolute left-1/2">
           foxmind<span>ed</span>
         </h1>
         <div className="header-container__cart-and-fox-buttons flex gap-2">
