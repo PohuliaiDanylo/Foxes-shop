@@ -1,3 +1,87 @@
 .footer-container {
   bottom: 0;
+  background: #191919;
+  color: $primary-color;
+
+  .footer-container__about-us {
+
+    .footer-container__about-us__logo {
+      color: $accent-color;
+
+      & > span {
+        color: $primary-color;
+      }
+    }
+
+    .footer-container__about-us__social-media {
+
+      .footer-container__about-us__social-media__link {
+        cursor: pointer;
+        transition: all 0.1s linear;
+      
+        &:hover {
+          scale: 0.9;
+        }
+
+        &:active {
+          scale: 0.85;
+        }
+      }
+    }
+  }
+
+  .footer-container__links {
+
+    .footer-container__links__link {
+      
+      & > h1 {
+        font-size: 1rem; /* 16px */
+        line-height: 1.5rem; /* 24px */
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+        white-space: nowrap;
+      }
+
+      & > ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      & > ul > li {
+        font-size: 0.875rem; /* 14px */
+        line-height: 1.25rem; /* 20px */
+        font-weight: 300;
+        white-space: nowrap;
+      }
+    }
+  }
+
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 7.5%;
+
+    .footer-container__about-us {
+      align-items: flex-start;
+      text-align: start;
+      flex: 1;
+      max-width: 12rem;
+    }
+    .footer-container__links {
+      display: flex;
+      flex: 3;
+      max-width: 34rem;
+      margin: 0;
+    }
+    .footer-container__rights {
+      width: 100%;
+      text-align: center;
+    }
+  }
 }
