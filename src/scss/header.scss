@@ -1,5 +1,6 @@
 .header-container {
-  position: relative;
+  position: absolute;
+  width: 100%;
   background: rgba(0, 0, 0, 0.5);
 
   .header-container__mobile-responsive__company-name {
@@ -67,6 +68,10 @@
         }
         &:active {
           scale: 0.85;
+        }
+
+        .header-container__navigation-menu__list__element__active {
+          color: $accent-color;
         }
       }
     }

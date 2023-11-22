@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { CustomLink } from "./customLink";
 
 function Header() {
   function resposiveness() {
@@ -61,16 +61,16 @@ function Header() {
         </h1>
         <ul className="header-container__navigation-menu__list">
           <li className="header-container__navigation-menu__list__element">
-            <Link to="/shop">Shop</Link>
+            <CustomLink to="/shop">Shop</CustomLink>
           </li>
           <li className="header-container__navigation-menu__list__element">
-            <Link to="/">MainPage</Link>
+            <CustomLink to="/">MainPage</CustomLink>
           </li>
           <li className="header-container__navigation-menu__list__element">
-            <Link to="/history">Our History</Link>
+            <CustomLink to="/history">Our History</CustomLink>
           </li>
           <li className="header-container__navigation-menu__list__element">
-            <Link to="/items">All Items</Link>
+            <CustomLink to="/items">All Items</CustomLink>
           </li>
         </ul>
         <button
