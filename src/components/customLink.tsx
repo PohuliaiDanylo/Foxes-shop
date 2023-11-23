@@ -11,7 +11,6 @@ const CustomLink = ({
   self?: any;
 }) => {
   const match = useMatch(to);
-  console.log(self);
 
   return (
     <Link
