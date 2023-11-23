@@ -56,6 +56,8 @@
     font-size: 1.25rem; /* 20px */
     line-height: 1.75rem; /* 28px */
 
+
+
     .header-container__navigation-menu__list {
       text-transform: uppercase;
 
@@ -79,6 +81,16 @@
 
   .header-container__navigation-menu-active {
     display: flex;
+
+    &::after {
+      content: '';
+      position: fixed;
+      offset: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+    }
   }
 }
 
