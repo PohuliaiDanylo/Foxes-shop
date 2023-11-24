@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="footer-container absolute w-screen flex flex-col p-8 gap-8">
+    <footer className="footer-container w-screen flex flex-col p-8 gap-8">
       <div className="footer-container__about-us text-center flex flex-col items-center gap-3 font-light">
         <h1 className="footer-container__about-us__logo text-xl font-bold">
           foxmind<span>ed</span>
