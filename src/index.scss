@@ -9,6 +9,7 @@
 @import './scss/mainPage.scss';
 
 .wrapper {
+  position: relative;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
