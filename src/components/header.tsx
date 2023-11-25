@@ -40,17 +40,17 @@ function Header() {
           className="header-container__button header-container__menu-button"
           onClick={openMenu}
         >
-          <img src="../../src/assets/header/dots.png" alt="open menu" />
+          <img src="/assets/header/dots.png" alt="open menu" />
         </button>
         <h1 className="header-container__mobile-responsive__company-name header-container__company-name text-xl font-bold absolute left-1/2">
           foxmind<span>ed</span>
         </h1>
         <div className="header-container__cart-and-fox-buttons flex gap-2">
           <button className="header-container__button header-container__cart-button w-7">
-            <img src="../../src/assets/header/cart.png" alt="shoping cart" />
+            <img src="/assets/header/cart.png" alt="shoping cart" />
           </button>
           <button className="header-container__button header-container__fox-button w-7">
-            <img src="../../src/assets/header/fox.png" alt="mainpage button" />
+            <img src="/assets/header/fox.png" alt="mainpage button" />
           </button>
         </div>
       </div>
@@ -79,7 +79,7 @@ function Header() {
         >
           <img
             className="w-4"
-            src="../../src/assets/header/close.png"
+            src="/assets/header/close.png"
             alt="close navigation menu"
           />
         </button>

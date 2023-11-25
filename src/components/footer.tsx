@@ -10,13 +10,13 @@ function Footer() {
 
         <ul className="footer-container__about-us__social-media flex gap-3">
           <li className="footer-container__about-us__social-media__link">
-            <img src="../../src/assets/footer/instagram.png" alt="" />
+            <img src="/assets/footer/instagram.png" alt="" />
           </li>
           <li className="footer-container__about-us__social-media__link">
-            <img src="../../src/assets/footer/telegram.png" alt="" />
+            <img src="/assets/footer/telegram.png" alt="" />
           </li>
           <li className="footer-container__about-us__social-media__link">
-            <img src="../../src/assets/footer/twitter.png" alt="" />
+            <img src="/assets/footer/twitter.png" alt="" />
           </li>
         </ul>
       </div>
