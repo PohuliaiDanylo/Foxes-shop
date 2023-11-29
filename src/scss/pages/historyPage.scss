@@ -1,0 +1,67 @@
+.history__container {
+
+  .history__container__title {
+    background: #E6E6E6;
+
+    & > h2 {
+      color: #A5A4A4;
+    }
+  } 
+
+  .history__container__cards {
+
+    .history__container__cards__card {
+
+      .history__container__cards__card__text {
+        padding: 2%;
+
+        & > h1 {
+          font-weight: 700;
+          font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;;
+        }
+      }
+
+      & > img {
+        max-width: 20rem;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+
+  .history__container {
+
+    .history__container__title {
+      padding: 2rem 0;
+
+      & > h2 {
+        color: #A5A4A4;
+      }
+    }
+
+    .history__container__cards {
+      align-items: center;
+      margin: 3rem 12%;
+
+      .history__container__cards__card {
+        display: flex;
+        flex-direction: row;
+
+        .history__container__cards__card__text {
+          max-width: 40rem;
+        }
+
+        & > img {
+          max-width: 10rem;
+        }
+
+        &:nth-child(even) {
+          flex-direction: row-reverse;
+        }
+      }
+    }
+  }
+}

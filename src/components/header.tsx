@@ -1,5 +1,26 @@
 import { CustomLink } from "./customLink";
 
+let header: HTMLElement | null = null;
+
+function responsiveness() {
+  const screenWidth = window.innerWidth;
+  const currentpage = window.location.pathname;
+  if (screenWidth >= 768 && currentpage === "/history") {
+    header?.classList.add("header-container-responsive");
+  } else {
+    header?.classList.remove("header-container-responsive");
+  }
+}
+
+window.addEventListener("load", () => {
+  header = document.querySelector(".header-container");
+  responsiveness();
+});
+
+window.addEventListener("click", responsiveness);
+
+window.addEventListener("resize", responsiveness);
+
 function Header() {
   function resposiveness() {
     const screenWidth = window.innerWidth;
