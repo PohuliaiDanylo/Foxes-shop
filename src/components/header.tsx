@@ -5,7 +5,12 @@ let header: HTMLElement | null = null;
 function responsiveness() {
   const screenWidth = window.innerWidth;
   const currentpage = window.location.pathname;
-  if (screenWidth >= 768 && currentpage === "/history") {
+  if (
+    screenWidth >= 768 &&
+    (currentpage === "/history" ||
+      currentpage === "/items" ||
+      currentpage === "/shop")
+  ) {
     header?.classList.add("header-container-responsive");
   } else {
     header?.classList.remove("header-container-responsive");

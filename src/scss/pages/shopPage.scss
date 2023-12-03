@@ -1,0 +1,10 @@
+.shop__container {
+  
+  .shop__container__title {
+    background: #E6E6E6;
+
+    & > h2 {
+      color: #A5A4A4;
+    }
+  } 
+}
