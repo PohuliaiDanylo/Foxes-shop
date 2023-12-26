@@ -1,7 +1,7 @@
 function History() {
   return (
     <div className="history__container flex flex-col gap-6 mb-6">
-      <div className="history__container__title p-7 flex flex-col items-center gap-2">
+      <div className="history__container__title p-2 flex flex-col items-center gap-2">
         <h2 className=" text-sm">Home/Our history</h2>
         <h1 className=" text-5xl font-serif">Our history</h1>
       </div>
