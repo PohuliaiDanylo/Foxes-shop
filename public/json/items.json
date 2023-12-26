@@ -1,0 +1,60 @@
+{
+  "Foxes": [
+    {
+      "img": "/assets/itemsPage/img1.png",
+      "name": "Stylish chair",
+      "price": "$120.00",
+      "location": "Forest",
+      "stars": "5"
+    },
+    {
+      "img": "/assets/itemsPage/img2.png",
+      "name": "Stylish chair",
+      "price": "$120.00",
+      "location": "Office",
+      "stars": "5"
+    },
+    {
+      "img": "/assets/itemsPage/img3.png",
+      "name": "Stylish chair",
+      "price": "$120.00",
+      "location": "Foxkid",
+      "stars": "5"
+    },
+    {
+      "img": "/assets/itemsPage/img4.png",
+      "name": "Stylish chair",
+      "price": "$120.00",
+      "location": "Foxkid",
+      "stars": "5"
+    },
+    {
+      "img": "/assets/itemsPage/img5.png",
+      "name": "Stylish chair",
+      "price": "$120.00",
+      "location": "Forest",
+      "stars": "5"
+    },
+    {
+      "img": "/assets/itemsPage/img6.png",
+      "name": "Stylish chair",
+      "price": "$120.00",
+      "location": "Other",
+      "stars": "5"
+    },
+    {
+      "img": "/assets/itemsPage/img7.png",
+      "name": "Stylish chair",
+      "price": "$120.00",
+      "location": "Forest",
+      "stars": "5"
+    },
+    {
+      "img": "/assets/itemsPage/img8.png",
+      "name": "Stylish chair",
+      "price": "$120.00",
+      "location": "Foxkid",
+      "stars": "5"
+    }
+  ]
+}
