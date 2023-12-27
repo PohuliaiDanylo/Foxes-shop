@@ -114,7 +114,7 @@
           color: $primary-color;
           aspect-ratio: 1/1;
           width: 3.5rem;
-          margin: 3vw;
+          margin: 1rem;
           transition: all 0.1s linear;
 
           &:hover {
@@ -127,6 +127,8 @@
         }
 
         .items__container__data__wrapper__data__item__info{
+          display: flex;
+          align-items: flex-start;
 
           & > .location {
             color: gray;
@@ -147,6 +149,79 @@
 
     .items__container__title {
       padding: 2rem 0;
+    }
+
+    .items__container__data__wrapper {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-template-areas: "properties data" "properties button";
+      gap: 3rem;
+      margin: 0 10vw 0 10vw;
+      justify-items: center;
+
+      .items__container__data__wrapper__properties {
+        grid-area: properties;
+
+        .items__container__data__wrapper__properties__topic {
+        
+          .items__container__data__wrapper__properties__topic__buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+
+            & > li {
+              & > button {
+                border: none;
+
+                &:hover {
+                  // border-radius: 0rem;
+                  background: transparent;
+                  color: $accent-color;
+                  scale: 0.8;
+                  box-shadow: 0 0 1rem 0.1rem $accent-color;
+                }
+              }
+
+              & > .active {
+                border-radius: 0;
+
+                &:hover {
+                  border-radius: 0.5rem;
+                }
+              }
+
+              &:not(:last-child) {
+                border-bottom: 0.1rem solid #EFEFEF;
+              }
+            }
+          }
+        }
+      }
+
+      .items__container__data__wrapper__data {
+        grid-area: data;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        .items__container__data__wrapper__data__item {
+          max-width: 30rem;
+          margin: auto;
+        }
+      }
+
+      .header-container__navigation-menu__list__element__active {
+        grid-area: button;
+        width: 75%;
+        justify-self: center;
+      }
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .items__container {
+    .items__container__data__wrapper {
+      margin: 0 20vw 0 20vw;
     }
   }
 }
