@@ -139,6 +139,16 @@
     .items__container__data__wrapper__button {
       color: $primary-color;
       background: $accent-color;
+      transition: all 0.1s linear;
+
+      &:hover {
+        box-shadow: 0 0 1rem 0.1rem $accent-color;
+        border-radius: 0.5rem;
+      }
+
+      &:active {
+        scale: 0.9;
+      }
     }
   }
 }
