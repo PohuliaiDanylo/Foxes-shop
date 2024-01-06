@@ -55,6 +55,20 @@ function Header() {
     navBar?.classList.remove("header-container__mobile-responsive-active");
   }
 
+  function openCartListMenu() {
+    const cartListMenu = document.querySelector(
+      ".header-container__cart-list-menu"
+    );
+    cartListMenu?.classList.add("header-container__cart-list-menu-active");
+  }
+
+  function closeCartListMenu() {
+    const cartListMenu = document.querySelector(
+      ".header-container__cart-list-menu"
+    );
+    cartListMenu?.classList.remove("header-container__cart-list-menu-active");
+  }
+
   window.addEventListener("resize", () => {
     resposiveness();
   });
@@ -72,12 +86,36 @@ function Header() {
           foxmind<span>ed</span>
         </h1>
         <div className="header-container__cart-and-fox-buttons flex gap-2">
-          <button className="header-container__button header-container__cart-button w-7">
+          <button
+            className="header-container__button header-container__cart-button w-7"
+            onClick={openCartListMenu}
+          >
             <img src="/assets/header/cart.png" alt="shoping cart" />
           </button>
           <button className="header-container__button header-container__fox-button w-7">
             <img src="/assets/header/fox.png" alt="mainpage button" />
           </button>
+        </div>
+      </div>
+
+      <div className="header-container__cart-list-menu">
+        <div className="wrapper py-10 px-4">
+          <div className="header-container__cart-list-menu__menu w-full flex flex-col items-center">
+            <button className=" mb-10" onClick={closeCartListMenu}>
+              <img src="/assets/header/close-gray.png" alt="" />
+            </button>
+            <h1 className="box">box</h1>
+            <h2 className=" mb-10 font-serif text-4xl font-bold">Your Bag</h2>
+            <div className="header-container__cart-list-menu__menu__items mb-10">
+              ...data...
+            </div>
+          </div>
+
+          <div className="header-container__cart-list-menu__checkout w-full flex flex-col items-center">
+            <h1 className=" font-serif text-4xl font-bold">Total:</h1>
+            <p className="price font-serif text-4xl font-bold mb-10">400$</p>
+            <button className=" text-lg">Checkout</button>
+          </div>
         </div>
       </div>
 
