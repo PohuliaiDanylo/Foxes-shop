@@ -87,6 +87,66 @@
           scale: 0.85;
         }
       }
+
+      .header-container__cart-list-menu__menu__items__item {
+        .header-container__cart-list-menu_menu__items__item__control-menu {
+
+          .header-container__cart-list-menu_menu__items__item__control-menu__controls {
+
+            .header-container__cart-list-menu_menu__items__item__control-menu__controls__minus-btn, .header-container__cart-list-menu_menu__items__item__control-menu__controls__plus-btn {
+              transition: all 0.1s linear;
+              font-size: 2rem;
+              font-weight: bold;
+              color: #8C8C8C;
+              width: 2.5rem;
+              height: 2.5rem;
+              border-radius: 50%;
+              position: relative;
+
+              &:hover {
+                box-shadow: 0 0 1rem 0 $accent-color;
+              }
+
+              &:active {
+                scale: 0.9;
+              }
+            
+              & > p {
+                position: absolute;
+                top: 42.5%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+            }
+
+            .header-container__cart-list-menu_menu__items__item__control-menu__controls__count {
+              background: $accent-color;
+              color: $primary-color;
+              min-width: 5rem;
+              border-radius: 2.5rem;
+              padding: 0 1rem;
+              display: flex;
+              justify-content: center;
+            }
+          }
+
+          .header-container__cart-list-menu_menu__items__item__control-menu__remove  {
+            padding: 0.25rem 0.5rem;
+            border-radius: 2rem;
+            transition: all 0.1s linear;
+            color: #8C8C8C;
+
+            &:hover {
+              box-shadow: 0 0 1rem 0 $accent-color;
+            }
+
+            &:active {
+              scale: 0.9;
+            }
+          
+          }
+        }
+      }
     }
 
     .header-container__cart-list-menu__checkout {
@@ -179,12 +239,13 @@
 
     .header-container__cart-list-menu {
       justify-content: flex-end;
+
       .wrapper {
         justify-content: space-between;
         position: fixed;
         height: 100vh;
-        width: 30%;
-        max-width: 20rem;
+        width: 50%;
+        max-width: 30rem;
 
         .header-container__cart-list-menu__menu {
 

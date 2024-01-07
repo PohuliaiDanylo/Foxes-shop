@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { CustomLink } from "./customLink";
 
 let header: HTMLElement | null = null;
@@ -69,6 +70,59 @@ function Header() {
     cartListMenu?.classList.remove("header-container__cart-list-menu-active");
   }
 
+  const loadInCartProducts = async () => {
+    try {
+      const response = await fetch("/json/items.json");
+      const data = await response.json();
+
+      const itemsContainer = document.querySelector(
+        ".header-container__cart-list-menu__menu__items"
+      );
+      if (itemsContainer) {
+        itemsContainer.innerHTML = "";
+      }
+      for (let i = 0; i < data.Foxes.length; i++) {
+        if (localStorage.getItem(data.Foxes[i].id)) {
+          itemsContainer?.insertAdjacentHTML(
+            "beforeend",
+            `
+            <div class="header-container__cart-list-menu__menu__items__item grid grid-cols-2 gap-2">
+              <div class="header-container__cart-list-menu_menu__items__item__fox-info">
+                <img src="${data.Foxes[i].img}"></img>
+                <div class="header-container__cart-list-menu_menu__items__item__fox-info__text flex justify-between gap-2">
+                  <h1 class=" font-bold">${data.Foxes[i].name}</h1>
+                  <p class=" font-bold">${data.Foxes[i].price}</p>
+                </div>
+              </div>
+
+              <div class="header-container__cart-list-menu_menu__items__item__control-menu flex flex-col items-center justify-center gap-6">
+                <div class="header-container__cart-list-menu_menu__items__item__control-menu__controls flex gap-4">
+                  <button class="header-container__cart-list-menu_menu__items__item__control-menu__controls__minus-btn"><p>-</p></button>
+                  <p class="header-container__cart-list-menu_menu__items__item__control-menu__controls__count flex items-center">${localStorage.getItem(
+                    data.Foxes[i].id
+                  )}</p>
+                  <button class="header-container__cart-list-menu_menu__items__item__control-menu__controls__plus-btn"><p>+</p></button>
+                </div>
+                
+                <button class="header-container__cart-list-menu_menu__items__item__control-menu__remove flex gap-2">
+                  <p>Remove</p>
+                  <img src="/assets/header/close-in-circle.png"></img>
+                </button>
+              </div>
+            </div>`
+          );
+        }
+      }
+    } catch (error) {
+      console.error("Error loading cart data:", error);
+    }
+  };
+
+  useEffect(() => {
+    const cartButton = document.querySelector(".header-container__cart-button");
+    cartButton?.addEventListener("click", loadInCartProducts);
+  }, []);
+
   window.addEventListener("resize", () => {
     resposiveness();
   });
@@ -108,9 +162,7 @@ function Header() {
             </button>
             <h1 className="box">box</h1>
             <h2 className=" mb-10 font-serif text-4xl font-bold">Your Bag</h2>
-            <div className="header-container__cart-list-menu__menu__items mb-10">
-              ...data...
-            </div>
+            <div className="header-container__cart-list-menu__menu__items mb-10 flex flex-col gap-8 mb-16"></div>
           </div>
 
           <div className="header-container__cart-list-menu__checkout w-full flex flex-col items-center">
