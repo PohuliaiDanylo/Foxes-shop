@@ -92,9 +92,11 @@ function Header() {
           >
             <img src="/assets/header/cart.png" alt="shoping cart" />
           </button>
-          <button className="header-container__button header-container__fox-button w-7">
-            <img src="/assets/header/fox.png" alt="mainpage button" />
-          </button>
+          <CustomLink to={"/"}>
+            <button className="header-container__button header-container__fox-button w-7">
+              <img src="/assets/header/fox.png" alt="mainpage button" />
+            </button>
+          </CustomLink>
         </div>
       </div>
 
