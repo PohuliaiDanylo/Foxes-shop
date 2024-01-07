@@ -162,7 +162,7 @@ function Header() {
             </button>
             <h1 className="box">box</h1>
             <h2 className=" mb-10 font-serif text-4xl font-bold">Your Bag</h2>
-            <div className="header-container__cart-list-menu__menu__items mb-10 flex flex-col gap-8 mb-16"></div>
+            <div className="header-container__cart-list-menu__menu__itemsflex flex-col gap-8 mb-16"></div>
           </div>
 
           <div className="header-container__cart-list-menu__checkout w-full flex flex-col items-center">
