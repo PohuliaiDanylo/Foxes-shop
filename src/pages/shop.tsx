@@ -34,10 +34,10 @@ function Shop() {
         String(Number(localStorage.getItem(el.id)) + 1)
       );
     }
-    console.log(localStorage.getItem(el.id));
   };
 
   const handleChange = (event: any) => {
+    loadFoxData();
     setPrice(event.target.value);
     const inputAfter = document.querySelector(
       ".items__container__data__wrapper__properties__price__input"
@@ -90,10 +90,11 @@ function Shop() {
     let html = "";
     const response = await fetch("/json/items.json");
     const data = await response.json();
+    const value = Number(document.querySelector(".value span")?.textContent);
 
     for (let i = 0; i < data.Foxes.length; i++) {
       const el = data.Foxes[i];
-      if (el.price.slice(1) <= Number(price)) {
+      if (el.price.slice(1) <= value) {
         if (topic == "All") {
           tohtmlfunc(el);
         } else if (el.location == (topic == "Fox kids" ? "Foxkid" : topic)) {
@@ -166,6 +167,7 @@ function Shop() {
         </div>
 
         <div className="items__container__data__wrapper__data flex flex-col gap-10 mb-10"></div>
+
         <CustomLink to={"/items"} className="w-full flex justify-center">
           <div className="items__container__data__wrapper__button py-4 text-center mb-2">
             All Foxes
