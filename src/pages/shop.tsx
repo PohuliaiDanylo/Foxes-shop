@@ -2,18 +2,6 @@ import { useState, useEffect } from "react";
 import { CustomLink } from "../components/customLink";
 
 function Shop() {
-  document.addEventListener("click", (e) => {
-    const targetElement = e.target as HTMLElement;
-
-    if (
-      targetElement?.classList.contains(
-        "items__container__data__wrapper__data__item__add-button"
-      )
-    ) {
-      addToCart(targetElement.parentElement);
-    }
-  });
-
   useEffect(() => {
     loadFoxData();
     btncontainer = document.querySelector(
@@ -105,6 +93,15 @@ function Shop() {
 
     container?.innerHTML != null ? (container.innerHTML = "") : null;
     container?.insertAdjacentHTML("afterbegin", html);
+
+    const buttons = document.querySelectorAll(
+      ".items__container__data__wrapper__data__item__add-button"
+    );
+    buttons.forEach((el) => {
+      el.addEventListener("click", () => {
+        addToCart(el.parentElement);
+      });
+    });
   };
 
   return (
