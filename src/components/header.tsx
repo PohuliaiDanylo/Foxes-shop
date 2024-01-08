@@ -78,15 +78,24 @@ function Header() {
       const itemsContainer = document.querySelector(
         ".header-container__cart-list-menu__menu__items"
       );
+
+      const price = document.querySelector(".price");
+      let totalPrice = 0;
+
       if (itemsContainer) {
         itemsContainer.innerHTML = "";
       }
       for (let i = 0; i < data.Foxes.length; i++) {
         if (localStorage.getItem(data.Foxes[i].id)) {
+          totalPrice +=
+            Number(localStorage.getItem(data.Foxes[i].id)) *
+            Number(data.Foxes[i].price.replace("$", ""));
           itemsContainer?.insertAdjacentHTML(
             "beforeend",
             `
-            <div class="header-container__cart-list-menu__menu__items__item grid grid-cols-2 gap-2">
+            <div id="${
+              data.Foxes[i].id
+            }" class="header-container__cart-list-menu__menu__items__item grid grid-cols-2 gap-2">
               <div class="header-container__cart-list-menu_menu__items__item__fox-info">
                 <img src="${data.Foxes[i].img}"></img>
                 <div class="header-container__cart-list-menu_menu__items__item__fox-info__text flex justify-between gap-2">
@@ -113,6 +122,53 @@ function Header() {
           );
         }
       }
+      if (price) {
+        price.textContent = `${totalPrice}$`;
+      }
+
+      const minus = document.querySelectorAll(
+        ".header-container__cart-list-menu_menu__items__item__control-menu__controls__minus-btn"
+      );
+      const plus = document.querySelectorAll(
+        ".header-container__cart-list-menu_menu__items__item__control-menu__controls__plus-btn"
+      );
+      const remove = document.querySelectorAll(
+        ".header-container__cart-list-menu_menu__items__item__control-menu__remove"
+      );
+
+      minus.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const itemID = btn.parentElement?.parentElement?.parentElement?.id;
+          if (Number(localStorage.getItem(String(itemID))) > 1) {
+            localStorage.setItem(
+              String(itemID),
+              String(Number(localStorage.getItem(String(itemID))) - 1)
+            );
+          } else {
+            localStorage.removeItem(String(itemID));
+          }
+          loadInCartProducts();
+        });
+      });
+
+      plus.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const itemID = btn.parentElement?.parentElement?.parentElement?.id;
+          localStorage.setItem(
+            String(itemID),
+            String(Number(localStorage.getItem(String(itemID))) + 1)
+          );
+          loadInCartProducts();
+        });
+      });
+
+      remove.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const itemID = btn.parentElement?.parentElement?.id;
+          localStorage.removeItem(String(itemID));
+          loadInCartProducts();
+        });
+      });
     } catch (error) {
       console.error("Error loading cart data:", error);
     }
