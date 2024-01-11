@@ -67,7 +67,7 @@ function Main() {
           fermentum egestas bibendum.Lorem ipsum dolor sit amet consectetur.{" "}
         </p>
         <div className="main__container__subscribe__input">
-          <form className="flex" action="">
+          <form className="flex flex-col gap-3" action="">
             <input
               className="text-xl"
               type="email"
