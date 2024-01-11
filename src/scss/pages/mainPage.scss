@@ -94,26 +94,28 @@
 
     .main__container__subscribe__input {
       width: 100%;
-      & > input {
-        width: 100%;
-        background: none;
-        outline: none;
-        border: 0.1rem solid #9A9494;
-        padding: 1rem 1.5rem;
-      }
-
-      & > button {
-        background: $regular-color;
-        color: $primary-color;
-        padding: 1rem 3rem;
-        transition: all 0.1s linear;
-
-        &:hover {
-          background: $accent-color;
+      & > form {
+        & > input {
+          width: 100%;
+          background: none;
+          outline: none;
+          border: 0.1rem solid #9A9494;
+          padding: 1rem 1.5rem;
         }
-
-        &:active {
-          scale: 0.9;
+  
+        & > button {
+          background: $regular-color;
+          color: $primary-color;
+          padding: 1rem 3rem;
+          transition: all 0.1s linear;
+  
+          &:hover {
+            background: $accent-color;
+          }
+  
+          &:active {
+            scale: 0.9;
+          }
         }
       }
     }

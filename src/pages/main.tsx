@@ -66,9 +66,16 @@ function Main() {
           Lorem ipsum dolor sit amet consectetur. Molestie turpis quis turpis
           fermentum egestas bibendum.Lorem ipsum dolor sit amet consectetur.{" "}
         </p>
-        <div className="main__container__subscribe__input flex flex-col gap-3">
-          <input className="text-xl" type="text" placeholder="Enter email" />
-          <button className="text-xl">Subscribe</button>
+        <div className="main__container__subscribe__input">
+          <form className="flex" action="">
+            <input
+              className="text-xl"
+              type="email"
+              placeholder="Enter email"
+              required
+            />
+            <button className="text-xl">Subscribe</button>
+          </form>
         </div>
       </div>
     </div>
