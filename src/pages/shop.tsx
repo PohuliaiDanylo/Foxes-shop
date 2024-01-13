@@ -1,17 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CustomLink } from "../components/customLink";
 
 function Shop() {
+  const btnContainerRef = useRef<HTMLUListElement>(null);
+  const inputAfterRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const valueRef = useRef<HTMLSpanElement>(null);
+
   useEffect(() => {
     loadFoxData();
-    btncontainer = document.querySelector(
-      ".items__container__data__wrapper__properties__topic__buttons-container"
-    );
     foxTypeButtons();
   }, []);
 
   const [price, setPrice] = useState(120);
-  let btncontainer: HTMLUListElement | null = null;
 
   const addToCart = (el: any) => {
     if (localStorage.getItem(el.id) == null) {
@@ -27,17 +28,16 @@ function Shop() {
   const handleChange = (event: any) => {
     loadFoxData();
     setPrice(event.target.value);
-    const inputAfter = document.querySelector(
-      ".items__container__data__wrapper__properties__price__input"
-    ) as HTMLInputElement;
-    inputAfter.style.setProperty(
-      "--width-after",
-      "calc(" + (event.target.value / event.target.max) * 100 + "%"
-    );
+    if (inputAfterRef.current != null) {
+      inputAfterRef.current.style.setProperty(
+        "--width-after",
+        "calc(" + (event.target.value / event.target.max) * 100 + "%"
+      );
+    }
   };
 
   const foxTypeButtons = () => {
-    btncontainer?.addEventListener("click", (e) => {
+    btnContainerRef.current?.addEventListener("click", (e) => {
       if (e.target != null && e.target instanceof HTMLButtonElement) {
         const buttons = document.querySelectorAll(
           ".items__container__data__wrapper__properties__topic__buttons-container button"
@@ -69,20 +69,16 @@ function Shop() {
       `;
     };
 
-    const container = document.querySelector(
-      ".items__container__data__wrapper__data"
-    );
     const topic = document.querySelector(
       ".items__container__data__wrapper__properties__topic__buttons-container button.active"
     )?.textContent;
     let html = "";
     const response = await fetch("/json/items.json");
     const data = await response.json();
-    const value = Number(document.querySelector(".value span")?.textContent);
 
     for (let i = 0; i < data.Foxes.length; i++) {
       const el = data.Foxes[i];
-      if (el.price.slice(1) <= value) {
+      if (el.price.slice(1) <= Number(valueRef.current?.textContent)) {
         if (topic == "All") {
           tohtmlfunc(el);
         } else if (el.location == (topic == "Fox kids" ? "Foxkid" : topic)) {
@@ -91,8 +87,10 @@ function Shop() {
       }
     }
 
-    container?.innerHTML != null ? (container.innerHTML = "") : null;
-    container?.insertAdjacentHTML("afterbegin", html);
+    containerRef.current?.innerHTML != null
+      ? (containerRef.current.innerHTML = "")
+      : null;
+    containerRef.current?.insertAdjacentHTML("afterbegin", html);
 
     const buttons = document.querySelectorAll(
       ".items__container__data__wrapper__data__item__add-button"
@@ -130,7 +128,10 @@ function Shop() {
 
           <div className="items__container__data__wrapper__properties__topic">
             <h1>Topic</h1>
-            <ul className="items__container__data__wrapper__properties__topic__buttons-container relative grid grid-cols-2 gap-2 mt-3 mb-6">
+            <ul
+              ref={btnContainerRef}
+              className="items__container__data__wrapper__properties__topic__buttons-container relative grid grid-cols-2 gap-2 mt-3 mb-6"
+            >
               <li>
                 <button className="active" onClick={loadFoxData}>
                   All
@@ -150,6 +151,7 @@ function Shop() {
           <div className="items__container__data__wrapper__properties__price flex flex-col">
             <h1>Price</h1>
             <input
+              ref={inputAfterRef}
               className="items__container__data__wrapper__properties__price__input mt-3"
               type="range"
               min="0"
@@ -158,12 +160,15 @@ function Shop() {
               onChange={handleChange}
             />
             <p className="value mt-3 mb-6 self-center font-bold text-lg">
-              Value: $<span>{price}</span>
+              Value: $<span ref={valueRef}>{price}</span>
             </p>
           </div>
         </div>
 
-        <div className="items__container__data__wrapper__data flex flex-col gap-10 mb-10"></div>
+        <div
+          ref={containerRef}
+          className="items__container__data__wrapper__data flex flex-col gap-10 mb-10"
+        ></div>
 
         <CustomLink to={"/items"} className="w-full flex justify-center">
           <div className="items__container__data__wrapper__button py-4 text-center mb-2">
