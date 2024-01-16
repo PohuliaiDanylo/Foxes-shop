@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { CustomLink } from "../components/customLink";
 
 function Shop() {
+  let topic: string;
   const btnContainerRef = useRef<HTMLUListElement>(null);
   const inputAfterRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -39,13 +40,14 @@ function Shop() {
   const foxTypeButtons = () => {
     btnContainerRef.current?.addEventListener("click", (e) => {
       if (e.target != null && e.target instanceof HTMLButtonElement) {
-        const buttons = document.querySelectorAll(
-          ".items__container__data__wrapper__properties__topic__buttons-container button"
-        );
-        buttons.forEach((el) => {
-          el.classList.remove("active");
-        });
-        e.target.classList.add("active");
+        const buttons = btnContainerRef.current?.children;
+        if (buttons != null) {
+          for (let i = 0; i < buttons.length; i++) {
+            const el = buttons[i];
+            el.children[0].classList.remove("active");
+          }
+          e.target.classList.add("active");
+        }
       }
     });
   };
@@ -69,9 +71,15 @@ function Shop() {
       `;
     };
 
-    const topic = document.querySelector(
-      ".items__container__data__wrapper__properties__topic__buttons-container button.active"
-    )?.textContent;
+    if (btnContainerRef.current != null) {
+      for (let i = 0; i < btnContainerRef.current.children.length; i++) {
+        const el = btnContainerRef.current.children[i];
+        if (el.children[0].classList.contains("active")) {
+          topic = el.children[0].textContent || "All";
+        }
+      }
+    }
+
     let html = "";
     const response = await fetch("/json/items.json");
     const data = await response.json();
@@ -92,14 +100,16 @@ function Shop() {
       : null;
     containerRef.current?.insertAdjacentHTML("afterbegin", html);
 
-    const buttons = document.querySelectorAll(
-      ".items__container__data__wrapper__data__item__add-button"
-    );
-    buttons.forEach((el) => {
-      el.addEventListener("click", () => {
-        addToCart(el.parentElement);
-      });
-    });
+    if (containerRef.current != null) {
+      for (let i = 0; i < containerRef.current.children.length; i++) {
+        const el = containerRef.current.children[i];
+        el.addEventListener("click", (e) => {
+          if (e.target != null && e.target instanceof HTMLButtonElement) {
+            addToCart(el);
+          }
+        });
+      }
+    }
   };
 
   return (

@@ -160,6 +160,7 @@ function Header() {
           items.push(newItem);
         }
       }
+
       const root = ReactDOM.createRoot(itemsContainerRef.current!);
       root.render(items);
 
